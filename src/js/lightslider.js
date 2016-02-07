@@ -28,7 +28,9 @@
         thumbItem: 10,
         pager: true,
         gallery: false,
-        galleryMargin: 5,
+        galleryMargin: 5,,
+        thumbWidth: 'auto',
+        thumbHeight: 'auto',
         thumbMargin: 5,
         currentPagerPosition: 'middle',
         enableTouch: true,
@@ -355,7 +357,9 @@
                         }
                         var thumb = $children.eq(i * settings.slideMove).attr('data-thumb');
                         if (settings.gallery === true) {
-                            pagers += '<li style="width:100%;' + property + ':' + thumbWidth + 'px;' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" /></a></li>';
+							var twidth = ( property == 'width' &&  settings.thumbWidth === 'auto' ) ? thumbWidth : settings.thumbWidth;
+							var theight = ( property == 'height' &&  settings.thumbHeight === 'auto' ) ? thumbWidth : settings.thumbHeight;
+                            pagers += '<li style="width:'+twidth+';height:' + theight + ';' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" /></a></li>';
                         } else {
                             pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
                         }
